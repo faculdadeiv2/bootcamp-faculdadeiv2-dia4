@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { RestauranteComponent } from '../restaurante/restaurante.component';
 import { RestaurantesService } from '../shared/restaurantes.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-restaurantes',
@@ -17,13 +18,21 @@ export class RestaurantesComponent implements OnInit {
 
   restaurantes: Array<any> = [];
 
+  usuarioLogado: any;
+
   constructor(
     private _http: HttpClient, private dialog: MatDialog,
     private _restaurantesService: RestaurantesService,
+    private _authService: AuthService,
   ) { }
 
   ngOnInit(): void {
     this.listarRestaurantes();
+    
+    this._authService.user$
+    .subscribe(userInfos => {
+      this.usuarioLogado = userInfos;
+    });
 
     this._http.get('https://servicodados.ibge.gov.br/api/v1/localidades/regioes/1|2|3|4|5/estados').subscribe((res: any) => {
       let estados = res;
@@ -50,14 +59,14 @@ export class RestaurantesComponent implements OnInit {
       width: '80%',
       height: 'max-content',
       data: {
-        usuario: '',
+        usuario: this.usuarioLogado,
         siglas: this.siglas
       }
     });
   }
 
   sair() {
-    console.log('Olá, função sair');
+    this._authService.sair();
   }
 
   abrirRestaurante(restaurante: any) {

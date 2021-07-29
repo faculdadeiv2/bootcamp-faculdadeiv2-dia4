@@ -30,7 +30,7 @@
               {{ restaurante.descricao }}
             </mat-card-subtitle>
             <p style="font-size: 10px; text-align: left; font-weight: 600;">
-              Criado por: Bootcamper em {{ restaurante.criadoEm.seconds*1000 | date: "MMMM d, y, h:mm:ss a":"IST":"en"}}
+              Criado por: {{restaurante.autorRestaurante.displayName}} em {{ restaurante.criadoEm.seconds*1000 | date: "MMMM d, y, h:mm:ss a":"IST":"pt"}}
             </p>
             <div id="toBottom">
               <div>

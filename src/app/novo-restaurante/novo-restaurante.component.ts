@@ -35,7 +35,7 @@ export class NovoRestauranteComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.data = this.data.siglas;
+    this.siglas = this.data.siglas;
     
     for(let index = 0; index < this.starCount; index++){
       this.ratingArr.push(index);
@@ -85,7 +85,7 @@ export class NovoRestauranteComponent implements OnInit {
       estado: this.novoRestaurante.value.estado,
       cidade: this.novoRestaurante.value.cidade,
       descricao: this.novoRestaurante.value.descricao,
-      // autorRestaurante: this.data.usuario,
+      autorRestaurante: this.data.usuario,
       criadoEm: new Date(),
       estrelas: this.rating
     }

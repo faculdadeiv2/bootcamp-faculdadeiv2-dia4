@@ -16,8 +16,8 @@
           </button>
         </div>
         <div id="autor">
-          <img src="../../assets/user-placeholder.png" width="60">
-          <p>Postado por Bootcamper</p>
+          <img [src]="restaurante.autorRestaurante.photoURL" width="60">
+          <p>Postado por {{ restaurante.autorRestaurante.displayName }}</p>
         </div>
       </div>
     </div>
@@ -39,7 +39,11 @@
           <img [src]="comentario.autor.foto" width="30">
           <span>{{ comentario.autor.nome }} - <i>{{ formataData(comentario.comentadoEm.seconds) }}</i></span>
         </div>
-        <mat-icon id="excluir-comentario" (click)="excluirComentario(comentario)">
+        <mat-icon
+          id="excluir-comentario"
+          (click)="excluirComentario(comentario)" 
+          *ngIf="usuarioLogado && comentario && usuarioLogado.uid === comentario.autor.uid"
+        >
           delete
         </mat-icon>
       </div>

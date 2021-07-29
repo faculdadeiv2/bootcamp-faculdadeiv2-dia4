@@ -1,0 +1,52 @@
+section {
+    display: flex;
+  
+    #icon {
+      width: 65%;
+      height: 100vh;
+      background-image: url('../../assets/backgroung-login.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+  
+    }
+  
+    #login {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      width: 35%;
+      height: 100vh;
+      padding: 0 16px;
+  
+      img {
+        width: 80%;
+        margin: 0 auto;
+      }
+  
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+  
+        h2 {
+          text-align: center;
+        }
+  
+        button {
+          width: 50%;
+          margin: 0 auto;
+          padding: 0;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          outline: none;
+  
+          img {
+            width: 100%;
+          }
+        }
+      }
+  
+    }
+  }
+  

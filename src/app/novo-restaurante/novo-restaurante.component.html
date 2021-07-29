@@ -13,7 +13,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Escolha um estado</mat-label>
                 <mat-select formControlName="estado" (selectionChange)="buscaCidade(novoRestaurante.value.estado)">
-                    <mat-option [value]="estado" *ngFor="let estado of data">
+                    <mat-option [value]="estado" *ngFor="let estado of siglas">
                         {{estado.nome}}
                     </mat-option>
                 </mat-select>
