@@ -1,0 +1,88 @@
+<section id="detalhes">
+  <section id="restaurante">
+    <h1>{{ restaurante.nome }}</h1>
+    <div id="descricao-autor">
+      <h3>
+        "{{ restaurante.descricao }}"
+      </h3>
+      <div>
+        <div id="rating">
+          <button
+            mat-icon-button class="ic" *ngFor="let ratingId of ratingArr;index as i"
+          >
+            <mat-icon>
+              {{ showIcon(rating, i) }}
+            </mat-icon>
+          </button>
+        </div>
+        <div id="autor">
+          <!-- coloquei uma imagem placeholder -->
+          <img src="../../assets/user-placeholder.png" width="60">
+          <!-- Coloquei nome provisorio -->
+          <p>Postado por Bootcamper</p>
+        </div>
+      </div>
+    </div>
+    <!-- Alterei imagem -->
+  <img [src]="restaurante.downloadUrl" width="500" id="restaurante-img">
+  <p>
+    Restaurante localizado em {{ restaurante.cidade }} - {{ restaurante.estado.nome }}
+  </p>
+</section>
+
+<div id="divisor"></div>
+
+<section id="comentarios">
+  <h2>Avaliações de quem frequentou esse restaurante</h2>
+
+  <div id="avaliacoes">
+    <mat-card *ngFor="let comentario of comentarios_usuarios">
+      <div id="usuario">
+        <!-- div abaixo alterada -->
+        <div>
+          <img [src]="comentario.autor.foto" width="30">
+          <span>{{ comentario.autor.nome }} - <i>{{ formataData(comentario.comentadoEm.seconds) }}</i></span>
+        </div>
+        <!-- icon adicionado -->
+        <mat-icon id="excluir-comentario" (click)="excluirComentario(comentario)">
+          delete
+        </mat-icon>
+      </div>
+      <p>"{{ comentario.comentario }}"</p>
+      <div id="star-rating">
+        <button
+          mat-icon-button class="ic" *ngFor="let ratingId of comentarios_usuarios_ratingArr;index as i"
+        >
+          <mat-icon>
+            {{ showIcon(comentario.estrelas, i) }}
+          </mat-icon>
+        </button>
+      </div>
+    </mat-card>
+  </div>
+
+  <div id="avaliacao-usuario">
+    <mat-form-field appearance="outline">
+      <mat-label>Dê sua opinião sobre esse restaurante</mat-label>
+      <textarea #comentario maxlength="256" matInput [(ngModel)]="comentario_usuario" rows="4"></textarea>
+      <mat-icon matSuffix>description</mat-icon>
+      <mat-hint>{{ comentario.value.length }} / 256</mat-hint>
+    </mat-form-field>
+
+    <div id="save">
+      <div id="star-rating">
+        <button
+          mat-icon-button class="ic" *ngFor="let ratingId of usuario_ratingArr;index as i" (click)="onClick(i+1)"
+        >
+          <mat-icon>
+            {{ showIcon(usuario_rating, i) }}
+          </mat-icon>
+        </button>
+      </div>
+      <button mat-flat-button id="toSave" (click)="enviarComentario()">
+        Enviar comentário
+      </button>
+    </div>
+  </div>
+</section>
+</section>

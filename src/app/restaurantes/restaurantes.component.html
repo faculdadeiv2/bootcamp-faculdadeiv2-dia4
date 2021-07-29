@@ -1,0 +1,50 @@
+<section>
+    <header>
+        <button mat-button [matMenuTriggerFor]="menu">Opções</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="novoRestaurante()">
+                <mat-icon>add</mat-icon>
+                Cadastrar Restaurantes
+            </button>
+            <button mat-menu-item (click)="sair()">
+                <mat-icon>logout</mat-icon>
+                Sair
+            </button>
+        </mat-menu>
+    </header>
+
+    <div id="restaurantes">
+        <h1>Restaurantes</h1>
+        <mat-form-field appearance="outline">
+          <mat-label>Busque por uma cidade ou nome do restaurante</mat-label>
+          <input matInput placeholder='Tente "Jundiaí" ou talvez "Restaurante da Fazenda"' [(ngModel)]="toSearch" [ngModelOptions]="{standalone: true}">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+    
+        <section id="restaurantes-cards">
+          <!-- adicionar o | buscaRestaurante: toSearch -->
+          <mat-card *ngFor="let restaurante of restaurantes | filtroRestaurante: toSearch">
+            <mat-card-title>
+              {{ restaurante.nome }}
+            </mat-card-title>
+            <mat-card-subtitle>
+              {{ restaurante.descricao }}
+            </mat-card-subtitle>
+            <p style="font-size: 10px; text-align: left; font-weight: 600;">
+              <!-- troquei o nome do criador e o esquema da data -->
+              Criado por: Bootcamper em {{ restaurante.criadoEm.seconds*1000 | date: "MMMM d, y, h:mm:ss a":"IST":"en"}}
+            </p>
+            <div id="toBottom">
+              <div>
+                <mat-icon>location_on</mat-icon>
+                <!-- localizaçao alterada -->
+                <p>{{ restaurante.cidade }}, {{ restaurante.estado.nome }}</p>
+              </div>
+              <button mat-flat-button color="primary" (click)="abrirRestaurante(restaurante)">
+                <mat-icon>visibility</mat-icon>
+              </button>
+            </div>
+          </mat-card>
+        </section>
+    </div>
+</section>

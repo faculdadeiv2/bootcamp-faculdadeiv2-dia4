@@ -1,0 +1,68 @@
+section {
+  padding: 0 0 16px 0;
+  
+  header {
+    padding: 16px;
+    background: #8D0090;
+    box-shadow: 1px 1px 4px #333;
+    color: #fff;
+  }
+  
+  #restaurantes {
+    width: 90%;
+    margin: auto;
+    margin-top: 16px;
+    
+    h1 {
+      font-weight: 600;
+    }
+    
+    mat-form-field {
+      width: 60%;
+    }
+    
+    #restaurantes-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      
+      mat-card {
+        background: #ffd1ff;
+        margin: 0px 12px 16px 0px;
+        width: 30%;
+        
+        mat-card-subtitle{
+          height: 100px;
+          align-items: center;
+          justify-content: center;
+          align-items: center;
+          margin-top: 25px;
+        }
+        
+        div {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          
+          p {
+            margin: 0;
+            margin: 5px;
+          }
+        }
+        
+        #toBottom{
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+}
+
+.mat-dialog-container {
+  padding: 0px !important;
+}
+
+span {
+  border: 0px !important;
+}
