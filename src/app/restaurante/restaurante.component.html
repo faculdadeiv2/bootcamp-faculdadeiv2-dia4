@@ -16,14 +16,11 @@
           </button>
         </div>
         <div id="autor">
-          <!-- coloquei uma imagem placeholder -->
           <img src="../../assets/user-placeholder.png" width="60">
-          <!-- Coloquei nome provisorio -->
           <p>Postado por Bootcamper</p>
         </div>
       </div>
     </div>
-    <!-- Alterei imagem -->
   <img [src]="restaurante.downloadUrl" width="500" id="restaurante-img">
   <p>
     Restaurante localizado em {{ restaurante.cidade }} - {{ restaurante.estado.nome }}
@@ -38,12 +35,10 @@
   <div id="avaliacoes">
     <mat-card *ngFor="let comentario of comentarios_usuarios">
       <div id="usuario">
-        <!-- div abaixo alterada -->
         <div>
           <img [src]="comentario.autor.foto" width="30">
           <span>{{ comentario.autor.nome }} - <i>{{ formataData(comentario.comentadoEm.seconds) }}</i></span>
         </div>
-        <!-- icon adicionado -->
         <mat-icon id="excluir-comentario" (click)="excluirComentario(comentario)">
           delete
         </mat-icon>

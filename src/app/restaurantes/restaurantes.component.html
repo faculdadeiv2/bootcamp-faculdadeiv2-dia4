@@ -22,7 +22,6 @@
         </mat-form-field>
     
         <section id="restaurantes-cards">
-          <!-- adicionar o | buscaRestaurante: toSearch -->
           <mat-card *ngFor="let restaurante of restaurantes | filtroRestaurante: toSearch">
             <mat-card-title>
               {{ restaurante.nome }}
@@ -31,13 +30,11 @@
               {{ restaurante.descricao }}
             </mat-card-subtitle>
             <p style="font-size: 10px; text-align: left; font-weight: 600;">
-              <!-- troquei o nome do criador e o esquema da data -->
               Criado por: Bootcamper em {{ restaurante.criadoEm.seconds*1000 | date: "MMMM d, y, h:mm:ss a":"IST":"en"}}
             </p>
             <div id="toBottom">
               <div>
                 <mat-icon>location_on</mat-icon>
-                <!-- localizaçao alterada -->
                 <p>{{ restaurante.cidade }}, {{ restaurante.estado.nome }}</p>
               </div>
               <button mat-flat-button color="primary" (click)="abrirRestaurante(restaurante)">

@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-// add o serviço
 import { RestaurantesService } from '../shared/restaurantes.service';
 
 @Component({
@@ -22,7 +21,6 @@ export class RestauranteComponent implements OnInit {
   comentarios_usuarios_ratingArr: Array<number> = [];
 
   comentario_usuario: any;
-  // limpei o array abaixo
   comentarios_usuarios: Array<any> = [];
 
   constructor(
@@ -30,7 +28,6 @@ export class RestauranteComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public restaurante: any,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    // add o serviço
     private _restauranteService: RestaurantesService,
   ) { }
 
@@ -63,7 +60,6 @@ export class RestauranteComponent implements OnInit {
     return false;
   }
 
-  // agora a função usa o serviço
   enviarComentario() {
     this._restauranteService
     .criaComentarioDousuario(this.restaurante.id, 'idprovisorio', {
@@ -78,7 +74,6 @@ export class RestauranteComponent implements OnInit {
     }).then(() => this.comentario_usuario = '');
   }
 
-  // agora a função usa o serviço
   listarComentarios(param: number) {
     this.mediaGeral = [];
     this._restauranteService.listaComentariosDoRestaurante(this.restaurante.id)
@@ -94,7 +89,6 @@ export class RestauranteComponent implements OnInit {
     });
   }
 
-  // nova função
   excluirComentario(comentario: any) {
     if (window.confirm('Deseja mesmo excluir esse comentário?')) {
       this._restauranteService.excluirComentario(this.restaurante.id, comentario.autor.uid);
@@ -106,7 +100,6 @@ export class RestauranteComponent implements OnInit {
     }
   }
 
-  // nova função
   formataData(seconds: number) {
     const data = new Date(seconds * 1000).toLocaleDateString();
     const horario = new Date(seconds * 1000).toLocaleTimeString();

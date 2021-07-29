@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-// serviço adicionado
 import { RestaurantesService } from '../shared/restaurantes.service';
 
 @Component({
@@ -32,7 +31,6 @@ export class NovoRestauranteComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any, 
     private _http: HttpClient,
     public dialogRef: MatDialogRef<NovoRestauranteComponent>,
-    // serviço adicionado
     private _restaurantesService: RestaurantesService,
   ) { }
 
@@ -81,7 +79,6 @@ export class NovoRestauranteComponent implements OnInit {
     });
   }
 
-  // função alterada
   salvarRestaurante(){
     const avaliacao = {
       nome: this.novoRestaurante.value.nome,
